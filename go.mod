@@ -1,4 +1,4 @@
-module example/web-service-gin
+module dometi.in/go-rest
 
 go 1.20
 

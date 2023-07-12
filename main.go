@@ -31,9 +31,14 @@ func getAlbum(c *gin.Context) {
 	id := c.Param("id")
 	c.IndentedJSON(http.StatusOK, gin.H{"uuid": id})
 }
+
+func home(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, gin.H{"status": "success"})
+}
 func main() {
 	router := gin.Default()
+	router.GET("/", home)
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbum)
-	router.Run("localhost:8080")
+	router.Run("0.0.0.0:9008")
 }

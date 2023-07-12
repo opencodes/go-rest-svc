@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  workflow-svc:
+    container_name: ${CONTAINER_NAME}
+    image: "${AWS_ECR_URL}/${CONTAINER_NAME}:${UNIQUE_IMAGE_TAG}"
+    build:
+      context: .
+    ports:
+      - "${CONTAINER_PORT}:${TARGET_PORT}"
+    environment:
+      - GATEWAY_URL=${GATEWAY_URL}
+      - JWT_KEY=${JWT_KEY}
+      - PORT=${CONTAINER_PORT}
