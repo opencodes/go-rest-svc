@@ -4,7 +4,9 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"go-rest-svc/src/configs"
 )
+
 
 // album represents data about a record album.
 type album struct {
@@ -37,6 +39,8 @@ func home(c *gin.Context) {
 }
 func main() {
 	router := gin.Default()
+	//run database
+	configs.ConnectDB()
 	router.GET("/", home)
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbum)
